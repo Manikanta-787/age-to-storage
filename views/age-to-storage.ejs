@@ -36,7 +36,7 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             background: linear-gradient(135deg, #06b6d4, #10b981);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-text-fill-color: none;
             background-clip: text;
         }
 
@@ -44,7 +44,7 @@
             font-size: 1.1rem;
             opacity: 0.8;
             font-weight: 300;
-            color: #cbd5e1;
+            color: #cbd5e16f;
         }
 
         .control-panel {
@@ -314,15 +314,21 @@
         }
 
         function formatNumber(num) {
-            if (num >= 1000000) {
-                return num.toLocaleString('en-US', { maximumFractionDigits: 2 });
-            } else if (num >= 100) {
-                return num.toLocaleString('en-US', { maximumFractionDigits: 1 });
-            } else if (num >= 1) {
-                return num.toLocaleString('en-US', { maximumFractionDigits: 2 });
-            } else {
-                return num.toLocaleString('en-US', { maximumFractionDigits: 4 });
+            let formatOption;
+            switch (true) {
+                case (num >= 1000000):
+                    formatOption = { maximumFractionDigits: 2 };
+                    break;
+                case (num >= 100):
+                    formatOption = { maximumFractionDigits: 1 };
+                    break;
+                case (num >= 1):
+                    formatOption = { maximumFractionDigits: 2 };
+                    break;
+                default:
+                    formatOption = { maximumFractionDigits: 4 };
             }
+            return num.toLocaleString('en-US', formatOption);
         }
 
         function updateResults() {
