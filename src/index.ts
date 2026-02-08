@@ -10,7 +10,7 @@ app.set('views', path.join(process.cwd(), 'views'));
 app.use(express.json());
 
 app.get('/', (req: Request, res: Response) => {
-  res.json({ message: 'Hello from Express + TypeScript' });
+  res.render('home', {});
 });
 
 app.get('/health', (req: Request, res: Response) => {

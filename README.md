@@ -2,8 +2,6 @@
 
 Express API with TypeScript.
 
-## Setup
-
 ```bash
 npm install
 ```
